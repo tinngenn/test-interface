@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<div>
+    <span>该区域不会被刷新</span>
+    <Button id="button">刷新</Button>
+    <div id="child_view">
+        <span>该区域会被刷新</span>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="http://mockjs.com/dist/mock.js"></script>
+<script  type = "text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    /*var basePath = /*[[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]]*/;
+
+
+    $('#button').bind('click', function () {
+        refresh();
+    });
+    window.onload = refresh();
+    function refresh() {
+        $.ajax({
+            url: '/index/refresh',
+            type: 'post',
+            dataType: 'text',
+            data: {
+
+            },
+            cache: false,
+            async: true,
+            success: function (data) {
+                $("#child_view").empty();
+                $("#child_view").append(data);
+            }
+        });
+    }
+
+    /*]]>*/
+</script>
+</body>
+</html>

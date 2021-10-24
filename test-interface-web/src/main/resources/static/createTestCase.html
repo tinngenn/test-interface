@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>循环创建http测试用例</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="showing">
+    <h2>循环创建http测试用例</h2>
+    <form method="post" action="/createTestCase">
+        <table>
+            <tr>
+                <td>HOST：</td>
+                <td><input type="text" value="192.168.111.151:8000" name="host" /></td>
+            </tr>
+            <tr>
+                <td>用例名称：</td>
+                <td><input type="text" value="AutoCreate" name="name" /></td>
+            </tr>
+            <tr>
+                <td>用例等级：</td>
+                <td><input type="text" value="3" name="priority" /></td>
+            </tr>
+            <tr>
+                <td>用例库ID：</td>
+                <td><input type="text" name="libraryId" /></td>
+            </tr>
+            <tr>
+                <td>树结构ID：</td>
+                <td><input type="text" name="treeNodeId" /></td>
+            </tr>
+            <tr>
+                <td>用例配置JSON串 Steps：</td>
+                <td><input type="text" style="width: 500px;height:100px;" name="stepsJson" /></td>
+            </tr>
+            <tr>
+                <td>生成个数：</td>
+                <td><input type="text" value="1"  name="count" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit"  value="提交" />
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+</body>
+</html>

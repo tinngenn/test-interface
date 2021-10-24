@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Http测试接口</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="showing">
+    <h2>Get方式重定向</h2>
+    <form method="post" action="/redirectGetAndPost">
+        <table>
+            <tr>
+                <td>登录号：</td>
+                <td><input type="text" name="loginNo" /></td>
+            </tr>
+            <tr>
+                <td>商户名称：</td>
+                <td><input type="text" name="merchantName" /></td>
+            </tr>
+            <tr>
+                <td>商户简称：</td>
+                <td><input type="text" name="merchantShortName" /></td>
+            </tr>
+            <tr>
+                <td>手机号：</td>
+                <td><input type="text" name="contactPhone" /></td>
+            </tr>
+            <tr>
+                <td>签约解决方案：</td>
+                <td><input type="text" name="prodCode" /></td>
+            </tr>
+            <tr>
+                <td>平台登录用户名：</td>
+                <td><input type="text" name="rosefinchUsername" /></td>
+            </tr>
+            <tr>
+                <td>生成个数：</td>
+                <td><input type="text" name="count" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="提交" />
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+</body>
+</html>
