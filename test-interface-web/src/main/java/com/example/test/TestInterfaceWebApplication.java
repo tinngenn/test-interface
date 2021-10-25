@@ -22,7 +22,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan("com.example.test.*")
 @Import({MyBatisConfig.class})
 //@EnableDubboSwagger
-
+//testgittest   fdsfdsfsdfd
+//testGit
 public class TestInterfaceWebApplication {
 
     public static void main(String[] args) {
