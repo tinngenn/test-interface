@@ -28,11 +28,6 @@ import java.util.Properties;
 @Configuration // 该注解类似于spring配置文件
 public class MyBatisConfig {
 
-
-
-
-
-
     @Bean
     @ConfigurationProperties(prefix = "mybatis.configuration")
     public org.apache.ibatis.session.Configuration configuration(){

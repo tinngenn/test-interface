@@ -13,7 +13,7 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 import java.util.List;
 
 /**
- * @author cdfive
+ * @author Swagger支持Dubbo接口
  */
 @Configuration
 @EnableDubboSwagger

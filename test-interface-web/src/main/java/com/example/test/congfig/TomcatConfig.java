@@ -7,8 +7,10 @@ import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
-
+/**
+ * 同事支持Http1.1和Http2
+ * 开启需要注销【Http2HttpsConfig】http自动跳转https
+ * */
 @Configuration
 public class TomcatConfig {
 
