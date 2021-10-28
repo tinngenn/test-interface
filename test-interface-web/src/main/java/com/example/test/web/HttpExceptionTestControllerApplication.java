@@ -71,7 +71,24 @@ public class HttpExceptionTestControllerApplication {
         return  "响应超时设定时间：" + timeout  + "耗时：" + takeUpTime;
     }
 
+    @ApiOperation("Http 自定义 请求checkSeq 并返回 checkSeq")
+    @ApiImplicitParams(
+            {
+               @ApiImplicitParam(name = "checkSeq", value = "超时时间", required = false , dataType = "string"),
+            })
+    @RequestMapping(value="/checkSeq", method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public String checkSequence(HttpServletRequest httpRequest) throws Exception {
+        String  checkSeq = "请求未配置 参数 checkSeq";
+        Map<String, String> map = cotrollerFuction.printMessage(httpRequest);
+        if(map.containsKey("checkSeq") && StringUtils.isNotEmpty(map.get("checkSeq"))){
+          checkSeq = map.get("checkSeq");}
 
-
+        long start = System.currentTimeMillis();
+        log.info("checkSeq开始"+ start);
+        long takeUpTime = System.currentTimeMillis() - start;
+        log.info(String.format("共计耗时{%s}毫秒", takeUpTime));
+        return    "checkSeq：" + checkSeq;
+    }
 
 }

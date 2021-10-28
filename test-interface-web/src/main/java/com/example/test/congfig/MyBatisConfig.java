@@ -42,6 +42,7 @@ public class MyBatisConfig {
     public DataSource merchantDbDataSource() throws Exception {
         Properties props = new Properties();
         props.put("driverClassName", "com.mysql.cj.jdbc.Driver");
+       // props.put("url", "jdbc:mysql://192.168.102.231:3306/tocean2");
         props.put("url", "jdbc:mysql://192.168.111.153:3306/tocean");
         props.put("username", "root");
         props.put("password", "Perfma888.");
