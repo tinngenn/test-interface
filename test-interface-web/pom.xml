@@ -132,6 +132,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.perfma.xcenter</groupId>
+            <artifactId>xcenter-facade</artifactId>
+        </dependency>
     </dependencies>
 
 

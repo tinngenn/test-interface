@@ -105,16 +105,7 @@ public class HttpClientUtil {
 
     public String doPostJson(String url, Map<String, Object> params, Map<String, String> header) throws Exception {
         String json = null;
-        if (params != null && !params.isEmpty()) {
-            for (Iterator<Entry<String, Object>> it = params.entrySet().iterator(); it.hasNext();) {
-                Entry<String, Object> entry = (Entry<String, Object>) it.next();
-                Object object = entry.getValue();
-                if (object == null) {
-                    it.remove();
-                }
-            }
-            json = JSON.toJSONString(params);
-        }
+        json = setParams(params, json);
         return postJson(url, json, header);
     }
 
@@ -203,12 +194,12 @@ public class HttpClientUtil {
     /**
      * 下载文件
      */
-    public void doDownload(String url, String path) throws Exception {
-        download(url, null, path);
+    public void doDownload(String url,Map<String, String> header, String path) throws Exception {
+        download(url, null,null, path);
     }
 
-    public void doDownload(String url, Map<String, Object> params, String path) throws Exception {
-        download(url, params, path);
+    public void doDownload(String url,Map<String, String> header, Map<String, Object> params, String path) throws Exception {
+        download(url, header, params, path);
     }
 
     /**
@@ -248,21 +239,36 @@ public class HttpClientUtil {
         return body;
     }
 
-    private void download(String url, Map<String, Object> params, String path) throws Exception {
+    private void download(String url,Map<String, String> header, Map<String, Object> params, String path) throws Exception {
         // Get请求
-        HttpGet httpGet = new HttpGet(url.trim());
-        if (params != null && !params.isEmpty()) {
-            // 设置参数
-            String str = EntityUtils.toString(new UrlEncodedFormEntity(map2NameValuePairList(params)));
-            String uri = httpGet.getURI().toString();
-            if (uri.indexOf("?") >= 0) {
-                httpGet.setURI(new URI(httpGet.getURI().toString() + "&" + str));
-            } else {
-                httpGet.setURI(new URI(httpGet.getURI().toString() + "?" + str));
+        HttpPost httpPost = new HttpPost(url.trim());
+        // 设置Header
+        if (header != null && !header.isEmpty()) {
+            log.info("header: {}" , JSON.toJSONString(header));
+            for (Iterator<Entry<String, String>> it = header.entrySet().iterator(); it.hasNext();) {
+                Entry<String, String> entry = (Entry<String, String>) it.next();
+                httpPost.setHeader(new BasicHeader(entry.getKey(), entry.getValue()));
             }
         }
+        String json = null;
+        json = setParams(params, json);
+        httpPost.setEntity(new StringEntity(json, ContentType.DEFAULT_TEXT.withCharset(charset)));
         // 发送请求,下载文件
-        downloadFile(httpGet, path);
+        downloadFile(httpPost, path);
+    }
+
+    private String setParams(Map<String, Object> params, String json) {
+        if (params != null && !params.isEmpty()) {
+            for (Iterator<Entry<String, Object>> it = params.entrySet().iterator(); it.hasNext();) {
+                Entry<String, Object> entry = (Entry<String, Object>) it.next();
+                Object object = entry.getValue();
+                if (object == null) {
+                    it.remove();
+                }
+            }
+            json = JSON.toJSONString(params);
+        }
+        return json;
     }
 
     private void downloadFile(HttpRequestBase requestBase, String path) throws Exception {
