@@ -72,7 +72,7 @@ public class HttpTestNg {
 
         Map<String,Object> map = new HashMap<>();
         Map<String,String> header = new HashMap<>();
-        map.put("xengineId","2");
+        map.put("xengineId","10.10.220.36@29899-40e5a03d");
         log.info(map.toString());
         header.put("Content-Type","application/json");
         HttpClientUtil httpClientUtil = HttpClientUtil.getInstance();

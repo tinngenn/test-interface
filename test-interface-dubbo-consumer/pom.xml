@@ -16,7 +16,10 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>test-interface-common</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>test-interface-service</artifactId>
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>test-interface-dubbo-api</artifactId>
