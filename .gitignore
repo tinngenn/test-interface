@@ -1,3 +1,39 @@
-/.idea
+# Created by .ignore support plugin (hsz.mobi)
+### Maven template
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
 *.iml
-*.class
+out
+gen
+.gitignore
+.idea/
+data/
+test-interface-common/target/
+test-interface-common/test-interface-common.iml
+test-interface-dal/target/
+test-interface-dal/test-interface-dal.iml
+test-interface-dubbo-api/target/
+test-interface-dubbo-api/test-interface-dubbo-api.iml
+test-interface-dubbo-consumer/target/
+test-interface-dubbo-consumer/test-interface-dubbo-consumer.iml
+test-interface-dubbo-provider/target/
+test-interface-dubbo-provider/test-interface-dubbo-provider.iml
+test-interface-service/target/
+test-interface-service/test-interface-service.iml
+test-interface-web/target/
+test-interface-web/test-interface-web.iml
+test-interface.iml
