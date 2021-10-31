@@ -25,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
 public class CommandRpcServiceCall {
 
     /**
-     *  Dubbo 调用商服注册服务
+     * 下方定时任务
      */
     @Reference(retries = 0, timeout = 5000, check = false )
     CommandRpcService commandRpcService;

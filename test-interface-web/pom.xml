@@ -144,6 +144,7 @@
         <!--属性渲染-->
         <resources>
             <resource>
+                <targetPath>${project.build.directory}/classes</targetPath>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
@@ -167,6 +168,7 @@
                     <include>**/*.csv</include>
                     <include>**/*.svg</include>
                     <include>**/*.pdf</include>
+                    <include>**</include>
                 </includes>
             </resource>
         </resources>
@@ -210,9 +212,11 @@
                                 <nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
                             </nonFilteredFileExtensions>
                             <outputDirectory>${project.basedir}/src/main/resources/data-excel/</outputDirectory>
+                            <outputDirectory>${project.basedir}/src/main/resources/META-INF/dubbo/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>../datafactory-dataprovider/target/classes/data-excel/</directory>
+                                    <directory>../test-interface-web/target/classes/data-excel/</directory>
+                                    <directory>../test-interface-dubbo-provider/target/classes/META-INF/dubbo/</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>

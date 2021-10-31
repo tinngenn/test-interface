@@ -10,11 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>test-interface-dubbo-provider</artifactId>
-    <packaging>jar</packaging>
     <name>test-interface-dubbo-provider</name>
     <version>${parent.version}</version>
     <description>test-interface-dubbo-provider</description>
-
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

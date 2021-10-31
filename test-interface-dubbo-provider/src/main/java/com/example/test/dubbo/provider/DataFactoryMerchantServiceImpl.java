@@ -30,8 +30,7 @@ import java.util.List;
  */
 @Slf4j
 //@Component("providerService")
-@Component
-@Service( timeout = 5000 , interfaceClass = DataFactoryMerchantService.class  )
+//@Service( timeout = 5000 , interfaceClass = DataFactoryMerchantService.class  )
 public class DataFactoryMerchantServiceImpl implements DataFactoryMerchantService {
 
 
@@ -58,6 +57,7 @@ public class DataFactoryMerchantServiceImpl implements DataFactoryMerchantServic
         List<OrgMerRegResult> list = new ArrayList<>();
         list.add(orgMerRegResult);
         result.setResult(list);
+        log.info("dubbo服务端内部处理");
         result.setPrimaryErrorMsg("受理成功，异步执行后，看数据库结果！");
 
         return result;

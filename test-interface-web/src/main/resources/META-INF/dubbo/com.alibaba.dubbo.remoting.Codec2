@@ -1,0 +1,1 @@
+RpcMockCodec=com.example.test.dubbo.codec.RpcMockCodec

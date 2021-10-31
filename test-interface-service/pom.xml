@@ -11,7 +11,6 @@
 
     <groupId>com.example.test</groupId>
     <artifactId>test-interface-service</artifactId>
-    <packaging>jar</packaging>
     <name>test-interface-service</name>
     <version>${parent.version}</version>
     <description>test-interface-service</description>
@@ -20,7 +19,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>test-interface-common</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.example.test</groupId>
@@ -30,7 +28,10 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>test-interface-dubbo-api</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>test-interface-dubbo-provider</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

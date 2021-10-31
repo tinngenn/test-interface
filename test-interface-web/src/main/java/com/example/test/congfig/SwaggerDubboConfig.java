@@ -36,7 +36,7 @@ public class SwaggerDubboConfig  {
             List<SwaggerResource> swaggerResources = super.get();
 
             SwaggerResource swaggerDubboResource = new SwaggerResource();
-            swaggerDubboResource.setName("dubbo");
+            swaggerDubboResource.setName("META-INF/dubbo");
             swaggerDubboResource.setLocation("/swagger-dubbo/api-docs");
             swaggerDubboResource.setSwaggerVersion("2.0");
             swaggerResources.add(swaggerDubboResource);

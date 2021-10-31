@@ -1,14 +1,10 @@
 package com.example.test.web;
 
-
-
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.test.common.Constants;
 import com.example.test.dubbo.cosurmer.OrgMerchantDubboCall;
 import com.example.test.service.HttpTestService;
 import com.example.test.utils.CotrollerFuction;
-import com.example.test.dubbo.api.request.OrgMerchantRegisteDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -38,9 +34,6 @@ public class HttpJsonTestControllerApplication {
 
     @Autowired
     HttpTestService httpTestService;
-
-    @Autowired
-    OrgMerchantDubboCall orgMerchantDubboCall;
 
 
     @ApiOperation("Http返回Json  双引号  响应 Content-type:application/json;charset=UTF-8" )
@@ -184,26 +177,6 @@ public class HttpJsonTestControllerApplication {
     }
 
 
-    @ApiOperation("Http转换Dubbo测试接口 DataFactoryMerchantService.orgMerRmethod = {RequestMethod.GET,RequestMethod.POST}egister")
-    @ResponseBody
-    @RequestMapping(value="/httpConvertDubboTest" , method = {RequestMethod.GET,RequestMethod.POST},
-            consumes="application/json", produces="application/json;charset=UTF-8")
-    public String httpConvertDubboTest(@RequestBody String orgMerchantRequest,
-                                       HttpServletRequest httpRequest) {
-        cotrollerFuction.printMessage(httpRequest);
-        MDC.put(Constants.TRACE_LOG_ID, UUID.randomUUID().toString());
-        log.info("111:{}",orgMerchantRequest.toString());
-   /*     OrgMerchantRegisteDTO orgMerchantRegisteDTO = new OrgMerchantRegisteDTO();
-        orgMerchantRegisteDTO.setLoginNo("18016078959");
-        orgMerchantRegisteDTO.setRosefinchUsername("shenyuan");
-        orgMerchantRegisteDTO.setTraceLogId("FFSD8FDF8H999");*/
-
-
-        OrgMerchantRegisteDTO orgMerchantRegisteDTO
-                = JSON.parseObject(orgMerchantRequest,OrgMerchantRegisteDTO.class);
-        log.info(orgMerchantRegisteDTO.toString());
-        return  orgMerchantDubboCall.orgMerRegisterCall(orgMerchantRegisteDTO);
-    }
 
     @ApiOperation("Http_返回递归Json 响应 Content-type:application/json;charset=UTF-8")
     @RequestMapping(value="/httpGetJsonRecursion", method = {RequestMethod.GET,RequestMethod.POST},
@@ -214,7 +187,6 @@ public class HttpJsonTestControllerApplication {
         cotrollerFuction.printMessage(httpRequest);
         return httpTestService.getDtoToJsonRecursion();
     }
-
 
 
     @ApiOperation("Http(Path)返回Json 响应 Content-type:application/json;charset=UTF-8")

@@ -5,13 +5,12 @@
 
     <modules>
         <module>test-interface-service</module>
-        <module>test-interface-common</module>
-        <module>test-interface-web</module>
         <module>test-interface-dubbo-api</module>
         <module>test-interface-dubbo-provider</module>
         <module>test-interface-dubbo-consumer</module>
         <module>test-interface-dal</module>
-
+        <module>test-interface-common</module>
+        <module>test-interface-web</module>
     </modules>
 
     <parent>
@@ -93,6 +92,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${springboot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>javassist</artifactId>
+                    <groupId>org.javassist</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--Mybits 实物回滚依赖包-->
         <!--Redis-->
@@ -277,11 +282,6 @@
             <version>1.2.9</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
-        </dependency>
 
         <!-- oval -->
         <dependency>

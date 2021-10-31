@@ -1,14 +1,18 @@
 package com.example.test.web;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.test.common.Constants;
 import com.example.test.dal.service.TestCaseDefineApiAutoService;
 import com.example.test.dal.service.TestCaseDefineApiAutoStepService;
 import com.example.test.dal.service.TestCaseService;
 import com.example.test.dubbo.api.dubboResult.Result;
+import com.example.test.dubbo.api.request.OrgMerchantRegisteDTO;
+import com.example.test.dubbo.cosurmer.ClientRpcServiceCall;
+import com.example.test.dubbo.cosurmer.OrgMerchantDubboCall;
 import com.example.test.service.ApiOptionService;
 import com.example.test.service.CreateTestCaseService;
-import com.example.test.service.kafka.FailureCallbackOverride;
-import com.example.test.service.kafka.SuccessCallbackOverride;
 import com.example.test.utils.CotrollerFuction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -53,6 +57,51 @@ public class HttpServierControllerApplication {
 
     @Autowired
     TestCaseDefineApiAutoService testCaseDefineApiAutoService;
+
+    @Autowired
+    OrgMerchantDubboCall orgMerchantDubboCall;
+
+    @Autowired
+    ClientRpcServiceCall clientRpcServiceCall;
+
+
+    @ApiOperation("Http转换Dubbo测试接口 DataFactoryMerchantService.orgMerRmethod = {RequestMethod.GET,RequestMethod.POST}egister")
+    @ResponseBody
+    @RequestMapping(value="/httpConvertDubboTest" , method = {RequestMethod.GET,RequestMethod.POST},
+            consumes="application/json", produces="application/json;charset=UTF-8")
+    public String httpConvertDubboTest(@RequestBody String orgMerchantRequest,
+                                       HttpServletRequest httpRequest) {
+        cotrollerFuction.printMessage(httpRequest);
+        MDC.put(Constants.TRACE_LOG_ID, UUID.randomUUID().toString());
+        log.info("111:{}",orgMerchantRequest.toString());
+/*        OrgMerchantRegisteDTO orgMerchantRegisteDTO = new OrgMerchantRegisteDTO();
+        orgMerchantRegisteDTO.setLoginNo("18016078959");
+        orgMerchantRegisteDTO.setRosefinchUsername("shenyuan");
+        orgMerchantRegisteDTO.setTraceLogId("FFSD8FDF8H999");*/
+
+
+        OrgMerchantRegisteDTO orgMerchantRegisteDTO
+                = JSON.parseObject(orgMerchantRequest,OrgMerchantRegisteDTO.class);
+        log.info(orgMerchantRegisteDTO.toString());
+        return  orgMerchantDubboCall.orgMerRegisterCall(orgMerchantRegisteDTO);
+    }
+
+
+
+
+    @ResponseBody
+    @RequestMapping(value="/getClientInfo" , method = {RequestMethod.GET,RequestMethod.POST},
+            produces="application/json;charset=UTF-8")
+    public String clientRpcServiceCall(
+                                       HttpServletRequest httpRequest) {
+        cotrollerFuction.printMessage(httpRequest);
+        MDC.put(Constants.TRACE_LOG_ID, UUID.randomUUID().toString());
+
+
+        return JSONObject.toJSONString(clientRpcServiceCall.getClientInfo(), SerializerFeature.WriteClassName,
+                SerializerFeature.SortField,
+                SerializerFeature.WriteNullStringAsEmpty);
+    }
 
 
 
