@@ -11,6 +11,7 @@
 
     <groupId>com.example.test</groupId>
     <artifactId>test-interface-service</artifactId>
+    <packaging>jar</packaging>
     <name>test-interface-service</name>
     <version>${parent.version}</version>
     <description>test-interface-service</description>
@@ -76,6 +77,14 @@
         <dependency>
             <groupId>io.socket</groupId>
             <artifactId>socket.io-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.perfma.xcenter</groupId>
+            <artifactId>xcenter-facade</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.perfma.xcenter</groupId>
+            <artifactId>xcenter-sdk-client</artifactId>
         </dependency>
     </dependencies>
 

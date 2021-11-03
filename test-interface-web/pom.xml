@@ -136,6 +136,10 @@
             <groupId>com.perfma.xcenter</groupId>
             <artifactId>xcenter-facade</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.perfma.xcenter</groupId>
+            <artifactId>xcenter-sdk-client</artifactId>
+        </dependency>
     </dependencies>
 
 

@@ -1,4 +1,4 @@
-package com.example.test.service.resultDTO;
+package com.example.test.service.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -37,31 +37,31 @@ public class InfoEvent {
     private String username;
 
     @ApiModelProperty("进程ID")
-    private String pid;
+    private Long pid;
 
     @ApiModelProperty("启动的用户ID")
-    private String uid;
+    private Long uid;
 
     @ApiModelProperty("cpu 核心数")
-    private String cpus;
+    private Long cpus;
 
     @ApiModelProperty("最大内存")
-    private String totalmem;
+    private Long totalmem;
 
     @ApiModelProperty("空闲内存")
-    private String freemem;
+    private Long freemem;
 
     @ApiModelProperty("最大异步执行单元")
-    private String maxWorker;
+    private Long maxWorker;
 
     @ApiModelProperty("当前空闲单元")
-    private String idleWorker;
+    private Long idleWorker;
 
     @ApiModelProperty("是否繁忙")
-    private String isBusy;
+    private Boolean isBusy;
 
     @ApiModelProperty("引擎启动时间")
-    private String startTime;
+    private Long startTime;
 
     @ApiModelProperty("用户tmp目录")
     private String tmpdir;

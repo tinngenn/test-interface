@@ -1,7 +1,7 @@
 package com.example.test.common;
 
 /**
- * ExcelUtils 使用常量
+ *  使用常量
  *
  * @author shenyuan
  * @version v0.1 2020/07/06 16:17
@@ -13,6 +13,11 @@ public class Constants {
     public static final String UNDERLINE = "_";
     public static final String TEST_TPOIC = "testtopic";
 
+    public static final String TOCEAN_INFO_EVENT = "tocean_infoEvent";
+    public static final String TOCEAN_TIMED_EVENT = "tocean_timedEvent";
+
+
+    public static final String InfoEventKafka = "InfoEventKafka";
 
     /* kafka等待监控时间*/
     public static final String KafkaListenerTime = "10000";

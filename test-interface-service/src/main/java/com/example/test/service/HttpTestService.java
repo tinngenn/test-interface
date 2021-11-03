@@ -5,7 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.test.common.Constants;
 import com.example.test.dubbo.api.result.OrgMerRegResult;
 import com.example.test.dubbo.api.dubboResult.Result;
-import com.example.test.service.resultDTO.AhupDeductBO;
+import com.example.test.service.dto.AhupDeductBO;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

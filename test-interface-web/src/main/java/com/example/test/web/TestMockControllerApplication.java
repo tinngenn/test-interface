@@ -1,8 +1,10 @@
 package com.example.test.web;
 
 import com.example.test.common.Constants;
+import com.example.test.service.XcenterProxy;
 import com.example.test.service.mock.TestMockService;
 import com.example.test.utils.CotrollerFuction;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,17 +49,21 @@ public class TestMockControllerApplication {
         return "添加mock";
     }
 
-    /**
-     *  删除注册
-     * */
 
-    @RequestMapping(value="/testMockDel" , method = {RequestMethod.GET, RequestMethod.POST})
+    @Autowired
+    XcenterProxy xcenterProxy = new XcenterProxy();
+
+    /**
+     *  模拟上报执行机
+     * */
+    @ApiOperation("Http 注册执行机（本机）")
+    @RequestMapping(value="/registXEngine" , method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String merchantSign(Model model, HttpServletRequest httpRequest) {
         MDC.put(Constants.TRACE_LOG_ID, UUID.randomUUID().toString());
-        Map<String, String> parmMap = cotrollerFuction.printMessage(httpRequest);
-        testMockService.testMockDel();
+        cotrollerFuction.printMessage(httpRequest);
+        xcenterProxy.start();
 
-        return "删除mock";
+        return "注册执行机成功";
     }
 }

@@ -1,7 +1,7 @@
 package com.example.test.service;
 
 import com.alibaba.fastjson.JSON;
-import com.example.test.service.resultDTO.InfoEvent;
+import com.example.test.service.dto.InfoEvent;
 import io.socket.client.IO;
 import java.net.URISyntaxException;
 import java.util.HashMap;

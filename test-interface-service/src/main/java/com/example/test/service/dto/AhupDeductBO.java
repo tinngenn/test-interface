@@ -1,4 +1,4 @@
-package com.example.test.service.resultDTO;
+package com.example.test.service.dto;
 
 
 

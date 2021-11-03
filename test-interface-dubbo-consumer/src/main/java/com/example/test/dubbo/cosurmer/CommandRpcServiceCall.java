@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 /**
- *  调用Xcenter
+ *  调用Xcenter命令下发
  *
  * @author shenyuan
  * @version v0.1 2020/08/09 12:18
@@ -25,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
 public class CommandRpcServiceCall {
 
     /**
-     * 下方定时任务
+     * 下发定时任务
      */
     @Reference(retries = 0, timeout = 5000, check = false )
     CommandRpcService commandRpcService;

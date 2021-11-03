@@ -4,6 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.SuccessCallback;
 
+
+/**
+ * kafka 发送成功回掉
+ *
+ * @author sy
+ * @version
+ */
 @Slf4j
 @Component
 public class SuccessCallbackOverride implements SuccessCallback {

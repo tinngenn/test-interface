@@ -3,21 +3,60 @@ package testNg;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.test.common.Constants;
+import com.example.test.service.dto.DispatchDoneEvent;
+import com.example.test.service.dto.DispatchError;
+import com.example.test.service.dto.DispatchErrorEvent;
+import com.example.test.service.emum.DispatchErrorEnum;
+import com.example.test.service.emum.ExecuteStatusEnum;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 import utils.HttpClientUtil;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
+
 @Slf4j
 public class HttpTestNg {
 
+    @Test
+public void tt() throws JsonProcessingException {
+        DispatchDoneEvent dispatchDoneEvent = new DispatchDoneEvent();
+        dispatchDoneEvent.setEvent("done");
+        dispatchDoneEvent.setRequestId("121212");
+
+    List<ExecuteStatusEnum> list = new ArrayList<>();
+    list.add(ExecuteStatusEnum.DONE);
+        list.add(ExecuteStatusEnum.EXIT);
+   /*     int features=SerializerFeature.config(JSONObject.DEFAULT_GENERATE_FEATURE,
+                SerializerFeature.WriteEnumUsingName, false);
+                JSONObject.toJSONString(list,features,SerializerFeature.EMPTY) */
+        dispatchDoneEvent.setData(list);
+      log.info("ExecuteStatusEnum:{}",  new ObjectMapper().writeValueAsString(dispatchDoneEvent));
+
+    }
+
+    @Test
+    public void stttt() throws JsonProcessingException {
 
 
+   /*     int features=SerializerFeature.config(JSONObject.DEFAULT_GENERATE_FEATURE,
+                SerializerFeature.WriteEnumUsingName, false);
+                JSONObject.toJSONString(list,features,SerializerFeature.EMPTY) */
+
+
+        DispatchErrorEvent dispatchErrorEvent= new DispatchErrorEvent();
+        DispatchError dispatchError = new  DispatchError();
+        dispatchError.setCode(DispatchErrorEnum.BUSY);
+        dispatchErrorEvent.setData(dispatchError);
+
+        log.info("ExecuteStatusEnum:{}",  new ObjectMapper().writeValueAsString(dispatchErrorEvent));
+
+    }
 
     @Test
     public void createTestCase() throws  Exception{
@@ -196,6 +235,24 @@ public class HttpTestNg {
         String urlStr = "http://192.168.111.249:8000/api/tocean/public/engine/download";
         // urlStr = "http://localhost:8092/httpGetHtml";
          httpClientUtil.doDownload(urlStr,header,map,"D:\\TWhale-1.0-SNAPSHOT-linux-x64.tar.gz");
+
+    }
+
+    //立即执行
+    @Test
+    public void start() throws  Exception{
+
+        Map<String,Object> map = new HashMap<>();
+        Map<String,String> header = new HashMap<>();
+        map.put("timedTaskId",1455412735876648961l);
+        log.info(map.toString());
+        header.put("Content-Type","application/json");
+        HttpClientUtil httpClientUtil = HttpClientUtil.getInstance();
+        String urlStr = "http://192.168.111.249:8000/api/tocean/public/timedtask/start";
+        // urlStr = "http://localhost:8092/httpGetHtml";
+        String resultJson=  httpClientUtil.doPostJson(urlStr,map,header);
+        //JSONObject jsonObject = JSON.parseObject(resultJson);
+        log.info(resultJson);
 
     }
 }

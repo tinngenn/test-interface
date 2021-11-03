@@ -2,7 +2,6 @@ package com.example.test.dubbo.cosurmer;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
-
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.test.dubbo.api.DataFactoryMerchantService;

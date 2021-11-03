@@ -2,7 +2,6 @@ package com.example.test.web;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.test.common.Constants;
-import com.example.test.dubbo.cosurmer.OrgMerchantDubboCall;
 import com.example.test.service.HttpTestService;
 import com.example.test.utils.CotrollerFuction;
 import io.swagger.annotations.Api;

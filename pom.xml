@@ -279,7 +279,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.9</version>
+            <version>1.2.70</version>
         </dependency>
 
 
@@ -345,14 +345,16 @@
             <artifactId>xcenter-facade</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.perfma.xcenter</groupId>
+            <artifactId>xcenter-sdk-client</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     </dependencyManagement>
 
     <build>
-
         <finalName>${project.parent.artifactId}</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
