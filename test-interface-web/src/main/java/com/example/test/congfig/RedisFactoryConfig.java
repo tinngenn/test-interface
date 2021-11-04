@@ -12,7 +12,7 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
+//@Configuration
 public class RedisFactoryConfig {
 
 

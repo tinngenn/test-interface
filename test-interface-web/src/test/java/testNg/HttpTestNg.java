@@ -6,13 +6,17 @@ import com.example.test.common.Constants;
 import com.example.test.service.dto.DispatchDoneEvent;
 import com.example.test.service.dto.DispatchError;
 import com.example.test.service.dto.DispatchErrorEvent;
+import com.example.test.service.dto.MessageDoneEvent;
 import com.example.test.service.emum.DispatchErrorEnum;
 import com.example.test.service.emum.ExecuteStatusEnum;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 import utils.HttpClientUtil;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,9 +44,40 @@ public void tt() throws JsonProcessingException {
 
     }
 
+
+
+    @Test
+    public void dd() throws JsonProcessingException {
+
+        MessageDoneEvent messageDoneEvent = new MessageDoneEvent();
+        messageDoneEvent.setEvent("done");
+        messageDoneEvent.setRequestId("1212112");
+        messageDoneEvent.setExecuteId(11);
+        messageDoneEvent.setFileKey("2021/10/28/6a0aadf2dd2e48ed8d0fe1df870a1776");
+        messageDoneEvent.setBytesSize(212);
+        messageDoneEvent.setFileName("用例执行结果66");
+        messageDoneEvent.setContentType("application/octet-stream");
+        messageDoneEvent.setStatus(ExecuteStatusEnum.CANCEL);
+        messageDoneEvent.setStartTime(LocalDateTime.parse("2021-09-28T17:07:05"));
+        messageDoneEvent.setEndTime(LocalDateTime.parse("2022-09-28T17:07:05"));
+        messageDoneEvent.setName("取消");
+        messageDoneEvent.setId("111");
+        messageDoneEvent.setStepCount(6);
+        messageDoneEvent.setPriority(6);
+        log.info( new ObjectMapper().writeValueAsString(messageDoneEvent));
+
+    }
+
+
+
+
+
+
+
+
     @Test
     public void stttt() throws JsonProcessingException {
-
+     log.info( String.format("timedTask:request:%s", new Object[] { "apiAuto_time_e7fe10c3-b85d-4b12-80c1-3ee7a010e73b"}));
 
    /*     int features=SerializerFeature.config(JSONObject.DEFAULT_GENERATE_FEATURE,
                 SerializerFeature.WriteEnumUsingName, false);
@@ -249,6 +284,25 @@ public void tt() throws JsonProcessingException {
         header.put("Content-Type","application/json");
         HttpClientUtil httpClientUtil = HttpClientUtil.getInstance();
         String urlStr = "http://192.168.111.249:8000/api/tocean/public/timedtask/start";
+        // urlStr = "http://localhost:8092/httpGetHtml";
+        String resultJson=  httpClientUtil.doPostJson(urlStr,map,header);
+        //JSONObject jsonObject = JSON.parseObject(resultJson);
+        log.info(resultJson);
+
+    }
+
+
+    //立即执行
+    @Test
+    public void cancel() throws  Exception{
+
+        Map<String,Object> map = new HashMap<>();
+        Map<String,String> header = new HashMap<>();
+        map.put("recordId",1456160477020184577l);
+        log.info(map.toString());
+        header.put("Content-Type","application/json");
+        HttpClientUtil httpClientUtil = HttpClientUtil.getInstance();
+        String urlStr = "http://192.168.111.249:8000/api/tocean/public/timedtask/cancel";
         // urlStr = "http://localhost:8092/httpGetHtml";
         String resultJson=  httpClientUtil.doPostJson(urlStr,map,header);
         //JSONObject jsonObject = JSON.parseObject(resultJson);

@@ -157,7 +157,7 @@ public class HttpServierControllerApplication {
                 @ApiImplicitParam(name = "count", value = "复制数量", required = false , dataType = "string"),
 
             })
-    @RequestMapping(value = "/CopyTestCase/testcaseId/", method = {RequestMethod.GET, RequestMethod.POST},
+    @RequestMapping(value = "/CopyTestCase/testcaseId", method = {RequestMethod.GET, RequestMethod.POST},
             produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String copyTestCase(HttpServletRequest httpRequest) {

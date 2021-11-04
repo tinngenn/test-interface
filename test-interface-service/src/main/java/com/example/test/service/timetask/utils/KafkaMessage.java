@@ -9,7 +9,12 @@ import com.example.test.service.emum.ExecuteStatusEnum;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -94,5 +99,31 @@ public class KafkaMessage {
         dispatchError.setMessage(dispatchErrorEnum.getDesc());
         dispatchErrorEvent.setData(dispatchError);
         return   new ObjectMapper().writeValueAsString(dispatchErrorEvent);
+    }
+
+
+    @Autowired
+    ObjectMapper objectMapper;
+    //定时任务事件返回
+    public String getMessageDoneEvent(MessageDoneEventDTO messageDoneEventDTO)
+            throws JsonProcessingException {
+        MessageDoneEvent messageDoneEvent = new MessageDoneEvent();
+        messageDoneEvent.setEvent("done");
+        messageDoneEvent.setRequestId(messageDoneEventDTO.getRequestId());
+        messageDoneEvent.setExecuteId(11);
+        messageDoneEvent.setFileKey(messageDoneEventDTO.getFileKey());
+        messageDoneEvent.setBytesSize(6666);
+        messageDoneEvent.setFileName(messageDoneEventDTO.getTestCaseName());
+        messageDoneEvent.setContentType("application/octet-stream");
+        messageDoneEvent.setStatus(messageDoneEvent.getStatus());
+        DateTimeFormatter sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        messageDoneEvent.setStartTime(LocalDateTime.parse(messageDoneEventDTO.getStartTime(),sdf));
+        messageDoneEvent.setEndTime(LocalDateTime.parse(messageDoneEventDTO.getEndTime(),sdf));
+        messageDoneEvent.setName(messageDoneEventDTO.getTestCaseName());
+        messageDoneEvent.setId(messageDoneEventDTO.getTestCaseId());
+        messageDoneEvent.setStepCount(Integer.valueOf(messageDoneEventDTO.getStepCount()));
+        messageDoneEvent.setPriority(Integer.valueOf(messageDoneEventDTO.getPriority()));
+        messageDoneEvent.setStatus(messageDoneEventDTO.getExecuteStatusEnum());
+        return   objectMapper.writeValueAsString(messageDoneEvent);
     }
 }

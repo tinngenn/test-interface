@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Redis操作测试页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style type="text/css">
+    body {
+        font-weight:400;font-size:18px;color:#000000;
+    }
+    .textStyle {
+        font-style: normal; font-weight:400;font-size:16px;color:#000000;
+    }
+    .fontButton {
+
+        font-weight:100;font-size:18px;color:#000000;
+    }
+</style>
+<body>
+<div class="showing">
+    <h2>Redis值获取</h2>
+    <form method="post" action="/redisTemplate/string/get">
+           <tr>
+            <td>Key：</td>
+            <td><input type="text" style="width:300px;" class="textStyle"  name="redisKey" /></td>
+           </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit"  class="fontButton" value="获取" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <h2>Redis赋值</h2>
+    <form method="post" action="/redisTemplate/string/set">
+        <tr>
+            <td>Key：</td>
+            <td><input type="text" style="width:300px;" class="textStyle" name="redisKey" /></td>
+        </tr>
+        <tr>
+            <td>Value：</td>
+            <td><input type="text" style="width:300px;" class="textStyle" name="redisValue" /></td>
+        </tr>
+        <tr>
+            <td>Timeout：</td>
+            <td><input type="text" style="width:50px;" class="textStyle"  name="redisTimeout" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit"  class="fontButton" value="赋值" />
+            </td>
+        </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

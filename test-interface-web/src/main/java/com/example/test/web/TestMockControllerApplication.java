@@ -62,8 +62,10 @@ public class TestMockControllerApplication {
     public String merchantSign(Model model, HttpServletRequest httpRequest) {
         MDC.put(Constants.TRACE_LOG_ID, UUID.randomUUID().toString());
         cotrollerFuction.printMessage(httpRequest);
-        xcenterProxy.start();
+        String  clientId = xcenterProxy.start();
 
-        return "注册执行机成功";
+        return "注册执行机成功" +  " : " +clientId;
     }
+
+
 }

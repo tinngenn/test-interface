@@ -115,6 +115,14 @@ public class Constants {
 
 //
 
+    /** 默认日期时间格式 */
+    public static final String DEFAULT_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    /** 默认日期格式 */
+    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+    /** 默认时间格式 */
+    public static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
+
+
     public static final String STEP_TIMEOUT = "{\n" +
             "\t\t\"id\": \"6e475296-8404-4fcc-a62b-d34baec67305\",\n" +
             "\t\t\"type\": 1,\n" +

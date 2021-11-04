@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>测试页面集合</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+
+<script language="javascript" type="text/javascript">
+    function redisHandleTest()
+    {
+        location.assign("redisHandleTest.html");
+    }
+
+    function timeTaskTest()
+    {
+        location.assign("timeTaskTest.html");
+    }
+    function createTestCase()
+    {
+        location.assign("createTestCase.html");
+    }
+
+</script>
+<style type="text/css">
+    body {
+         font-weight:400;font-size:24px;color:#000000;
+      }
+
+    .fontButton {
+
+         font-weight:100;font-size:18px;color:#000000;
+    }
+</style>
+<h1>测试页面集合</h1>
+<body>
+<form method="post" action="/all">
+    <table>
+        <tr>
+            <td>Redis测试：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="redisHandleTest()" class="fontButton"  value="Redis测试"/> </td>
+        </tr>
+        <tr>
+            <td>复制用例，同一个树结构下：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="createTestCase()" class="fontButton"  value="复制用例"/> </td>
+        </tr>
+        <tr>
+            <td>定时任务测试：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="timeTaskTest()" class="fontButton"  value="定时任务测试"/> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

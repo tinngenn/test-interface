@@ -1,4 +1,4 @@
-package com.example.test.service.delegate.farend;
+package com.example.test.service.farend;
 
 
 /**
@@ -8,4 +8,5 @@ package com.example.test.service.delegate.farend;
  * @date 2021/04/23.
  */
 public class CommandModule {
+
 }

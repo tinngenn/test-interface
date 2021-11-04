@@ -5,35 +5,51 @@
     <title>定时任务和执行机测试页面</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<style type="text/css">
+    body {
+        font-weight:400;font-size:18px;color:#000000;
+    }
+    .textStyle {
+        font-style: normal; font-weight:400;font-size:14px;color:#000000;
+    }
+    .fontButton {
+
+        font-weight:100;font-size:16px;color:#000000;
+    }
+</style>
 <body>
 <div class="showing">
     <h2>注册本机为执行机</h2>
     <form method="post" action="/registXEngine">
+        <table>
             <tr>
-                <td colspan="2">
-                    <input type="submit" value="提交" />
+                <td >
+                    <input type="submit" class="fontButton" value="注册本机" />
                 </td>
             </tr>
         </table>
     </form>
+    <br>
     <h2>启动InfoEvent 执行机心跳kafka任务 空闲</h2>
     <form method="post" action="/kafka/infoEvent/free/start">
+        <table>
         <tr>
             <td>clientId：</td>
-            <td><input type="text" style="width:300px;" name="clientId" /></td>
+            <td><input type="text" class="textStyle" style="width:200px;" name="clientId" ></td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="启动InfoEvent 执行机心跳kafka任务" />
+                <input type="submit" class="fontButton" class="fontButton"  value="启动InfoEvent 执行机心跳kafka任务"/>
             </td>
         </tr>
         </table>
     </form>
     <h2>停止InfoEvent 执行机心跳kafka任务 空闲</h2>
     <form method="post" action="/kafka/infoEvent/free/stop">
+        <table>
         <tr>
             <td colspan="2">
-                <input type="submit" value="停止InfoEvent 执行机心跳kafka任务" />
+                <input type="submit" class="fontButton"  value="停止InfoEvent 执行机心跳kafka任务" />
             </td>
         </tr>
         </table>
@@ -41,56 +57,44 @@
     <br> <br>
     <h2>启动InfoEvent 执行机心跳kafka任务 繁忙</h2>
     <form method="post" action="/kafka/infoEvent/busy/start">
+        <table>
         <tr>
             <td>clientId：</td>
-            <td><input type="text" style="width:300px;" name="clientId" /></td>
+            <td><input type="text" style="width:200px;" class="textStyle" name="clientId" /></td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="启动InfoEvent 执行机心跳kafka任务" />
+                <input type="submit" class="fontButton" value="启动InfoEvent 执行机心跳kafka任务" />
             </td>
         </tr>
         </table>
     </form>
     <h2>停止InfoEvent 执行机心跳kafka任务 繁忙</h2>
     <form method="post" action="/kafka/infoEvent/busy/stop">
+        <table>
         <tr>
             <td colspan="2">
-                <input type="submit" value="停止InfoEvent 执行机心跳kafka任务" />
+                <input type="submit" class="fontButton" value="停止InfoEvent 执行机心跳kafka任务"/>
             </td>
         </tr>
         </table>
     </form>
     <br> <br>
 
-<!--    <h2>发送InfoEvent 每秒心跳Kafka</h2>
-    <form method="post" action="/kafka/infoEvent">
-        <tr>
-            <td>clientId：</td>
-            <td><input type="text" style="width:300px;" name="clientId" /></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="提交" />
-            </td>
-        </tr>
-        </table>
-    </form>-->
-
-    <h2>发送DispatchSuccessEvent 受理定时任务</h2>
+   <h2>发送DispatchSuccessEvent 受理定时任务</h2>
     <form method="post" action="/kafka/dispatchSuccessEvent">
+        <table>
         <tr>
             <td>clientId：</td>
-            <td><input type="text"  style="width:300px;" name="clientId" /></td>
+            <td><input type="text"  style="width:200px;" class="textStyle" name="clientId" /></td>
         </tr>
         <tr>
             <td>requestId：</td>
-            <td><input type="text"  style="width:300px;" name="requestId" /></td>
+            <td><input type="text"  style="width:400px;" class="textStyle"  name="requestId"/></td>
         </tr>
-
         <tr>
             <td colspan="2">
-                <input type="submit" value="提交" />
+                <input type="submit" class="fontButton"  value="提交 DispatchSuccessEvent" />
             </td>
         </tr>
         </table>
@@ -98,52 +102,106 @@
     <br> <br>
     <h2>发送DispatchDoneEvent 定时执行返回</h2>
     <form method="post" action="/kafka/dispatchDoneEvent">
+        <table>
         <tr>
             <td>clientId：</td>
-            <td><input type="text"  style="width:300px;" name="clientId" /></td>
+            <td><input type="text"  style="width:200px;" class="textStyle"  name="clientId" /></td>
         </tr>
         <tr>
             <td>requestId：</td>
-            <td><input type="text"  style="width:300px;" name="requestId" /></td>
+            <td><input type="text"  style="width:400px;" class="textStyle"  name="requestId" /></td>
         </tr>
         <tr>
             <td>executeStatusEnums：</td>
-            <td><input type="text"  style="width:300px;" value="[&quot;DONE&quot;,&quot;DONE&quot;]"  name="executeStatusEnums" /></td>
+            <td ><input type="text"  style="width:300px;" value="[&quot;DONE&quot;,&quot;DONE&quot;]" class="textStyle"  name="executeStatusEnums"/></td>
         </tr>
+         <tr><td colspan="3">枚举executeStatusEnums:[ WAIT，RUNNING，DONE，SKIP，ERROR，TIMEOUT，CANCEL，EXIT ]</td></tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="提交" />
+                <input type="submit" class="fontButton" value="提交 DispatchDoneEvent" />
             </td>
         </tr>
         </table>
     </form>
-    <br>
-    <h6> 枚举executeStatusEnums:[ WAIT，RUNNING，DONE，SKIP，ERROR，TIMEOUT，CANCEL，EXIT ]</h6>
-    <br>
-
-    <h2>发送DispatchDoneEvent 定时执行返回</h2>
+    <br><br>
+    <h2>发送DispatchErrorEvent 定时执行返回</h2>
     <form method="post" action="/kafka/dispatchErrorEvent">
+        <table>
         <tr>
             <td>clientId：</td>
-            <td><input type="text"  style="width:300px;" name="clientId" /></td>
+            <td><input type="text"  style="width:200px;" class="textStyle" name="clientId" /></td>
         </tr>
         <tr>
             <td>requestId：</td>
-            <td><input type="text"  style="width:300px;" name="requestId" /></td>
+            <td><input type="text"  style="width:400px;" class="textStyle" name="requestId" /></td>
         </tr>
         <tr>
             <td>dispatchErrorEnum：</td>
-            <td><input type="text"  style="width:300px;" value="&quot;BUSY&quot;" name="dispatchErrorEnum" /></td>
+            <td><input type="text"  style="width:300px;" value="&quot;BUSY&quot;" name="dispatchErrorEnum" ></td>
         </tr>
+            <tr><td colspan="3">枚举dispatchErrorEnum:[ COMMON，BUSY，ILLEGAL，DUPLICATED ]</td></tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="提交" />
+                <input type="submit" class="fontButton" class="fontButton" value="提交 DispatchErrorEvent" />
+            </td>
+        </tr>
+        </table>
+    </form>
+    <br> <br>
+    <h2>发送MessageDoneEvent 定时执行返回</h2>
+    <form method="post" action="/kafka/messageDoneEvent">
+        <table>
+        <tr>
+            <td>clientId：</td>
+            <td><input type="text"  style="width:200px;" class="textStyle"  name="clientId" /></td>
+        </tr>
+        <tr>
+            <td>requestId：</td>
+            <td><input type="text"  style="width:400px;" class="textStyle"  name="requestId" /></td>
+        </tr>
+            <tr>
+                <td>testCaseId：</td>
+                <td><input type="text"  style="width:400px;" class="textStyle"  value="111" name="testCaseId" /></td>
+            </tr>
+            <tr>
+                <td>stepCount：</td>
+                <td><input type="text"  style="width:400px;" class="textStyle" value="1" name="stepCount" /></td>
+            </tr>
+            <tr>
+                <td>priority：</td>
+                <td><input type="text"  style="width:400px;" class="textStyle"  value="2"  name="priority" /></td>
+            </tr>
+            <tr>
+                <td>fileKey：</td>
+                <td><input type="text"  style="width:400px;" class="textStyle" value="2021/11/04/11447722cf8c43ceaad2f23466c6d17d"  name="fileKey" /></td>
+            </tr>
+            <tr>
+                <td>startTime：</td>
+                <td><input type="text"  style="width:400px;" class="textStyle"   name="startTime" /></td>
+                <td>yyyy-MM-dd HH:mm:ss</td>
+            </tr>
+            <tr>
+                <td>endTime：</td>
+                <td><input type="text"  style="width:400px;" class="textStyle"   name="endTime" /></td>
+                <td>yyyy-MM-dd HH:mm:ss</td>
+            </tr>
+            <tr>
+                <td>testCaseName：</td>
+                <td><input type="text"  style="width:400px;" class="textStyle" value="testName"  name="testCaseName" /></td>
+            </tr>
+            <tr>
+            <td>executeStatusEnum：</td>
+            <td><input type="text"  style="width:300px;" class="textStyle"  value="&quot;CANCEL&quot;" name="executeStatusEnum" ></td>
+        </tr>
+            <tr><td colspan="3">枚举executeStatusEnum:[ WAIT，RUNNING，DONE，SKIP，ERROR，TIMEOUT，CANCEL，EXIT ]</td></tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="fontButton" class="fontButton" value="提交" />
             </td>
         </tr>
         </table>
     </form>
     <br>
-    <h6> 枚举executeStatusEnums:[ COMMON，BUSY，ILLEGAL，DUPLICATED]</h6>
     <br>
 </div>
 </body>
