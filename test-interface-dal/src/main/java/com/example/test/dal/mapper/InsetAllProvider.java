@@ -19,7 +19,7 @@ public class InsetAllProvider {
         StringBuilder sb = new StringBuilder();
         sb.append("insert into test_case");
         sb.append("(id,tenant_id,name,created_at,modified_at,created_by,modified_by," +
-                "library_id,test_case_id,test_case_type,priority,define_id,tree_path) ");
+                "library_id,test_case_code,test_case_type,priority,tree_path) ");
         sb.append("VALUES ");
         MessageFormat mf = new MessageFormat("(null," +
                 "#'{'list[{0}].tenantId}," +
@@ -29,10 +29,9 @@ public class InsetAllProvider {
                 "#'{'list[{0}].createdBy}," +
                 "#'{'list[{0}].modifiedBy}," +
                 "#'{'list[{0}].libraryId}," +
-                "#'{'list[{0}].testCaseId}," +
+                "#'{'list[{0}].testCaseCode}," +
                 "#'{'list[{0}].testCaseType}," +
                 "#'{'list[{0}].priority}," +
-                "#'{'list[{0}].defineId}," +
                 "#'{'list[{0}].treePath})");
         for (int i = 0; i < list.size(); i++) {
             sb.append(mf.format(new Object[]{i}));
@@ -55,7 +54,8 @@ public class InsetAllProvider {
         sb.append("insert into test_case_define_api_auto ");
         sb.append("(id,tenant_id, created_at, modified_at) ");
         sb.append("VALUES ");
-        MessageFormat mf = new MessageFormat("(null," +
+        MessageFormat mf = new MessageFormat("(" +
+                "#'{'list[{0}].id}," +
                 "#'{'list[{0}].tenantId}," +
                 "#'{'list[{0}].createdAt}," +
                 "#'{'list[{0}].modifiedAt})");

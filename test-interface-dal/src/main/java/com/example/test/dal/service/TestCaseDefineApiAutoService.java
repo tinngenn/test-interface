@@ -27,13 +27,13 @@ public class TestCaseDefineApiAutoService {
 
     /**
      * 通过testCaseId 查询测试用例表配置
-     * @param  defineld   用例配置关联id
+     * @param  Id   用例配置关联id
      * @return TestCaseDefineApiAutoStepDO   表数据DO对象
      */
 
-    public List<TestCaseDefineApiAutoDO> getTestCaseDefineApiAutoDO(Long defineld) {
+    public List<TestCaseDefineApiAutoDO> getTestCaseDefineApiAutoDO(Long Id) {
 
-        return testCaseDefineApiSAutoDODao.getTestCaseDefineApiAutoDO(defineld);
+        return testCaseDefineApiSAutoDODao.getTestCaseDefineApiAutoDO(Id);
 
     }
 

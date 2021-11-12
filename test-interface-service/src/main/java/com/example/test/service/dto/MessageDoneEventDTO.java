@@ -14,6 +14,7 @@ public class MessageDoneEventDTO {
     private  String requestId;
     private  String testCaseId;
     private  String stepCount;
+    private  Integer executeId;
     private  String priority;
     private  String fileKey;
     private String startTime;

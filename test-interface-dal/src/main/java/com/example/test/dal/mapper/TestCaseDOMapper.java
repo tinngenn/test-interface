@@ -9,9 +9,9 @@ import java.util.List;
 @Mapper
 public interface TestCaseDOMapper {
 
-    @Select("select * from test_case  where  test_case_id = #{testCaseId}")
+    @Select("select * from test_case  where  test_case_code = #{testCaseCode}")
     @Results(value = { @Result(id = true, column = "id", property = "id")})
-     List<TestCaseDO> getTestCase(@Param("testCaseId") String testCaseId);
+     List<TestCaseDO> getTestCase(@Param("testCaseCode") String testCaseCode);
 
 
     // 插入Test_casec测试用例表
@@ -22,7 +22,7 @@ public interface TestCaseDOMapper {
 
 
     // 更新用例编号和id号相同并加C前缀
-    @Update({ "update test_case set test_case_id = #{testCaseId}," +
+    @Update({ "update test_case set test_case_code= #{testCaseCode}," +
             "tenant_id = #{tenantId}," +
             "name = #{name}," +
             "created_at = #{createdAt}," +
@@ -32,9 +32,8 @@ public interface TestCaseDOMapper {
             "library_id = #{libraryId}," +
             "test_case_type = #{testCaseType}," +
             "priority = #{priority}," +
-            "define_id = #{defineId}," +
             "tree_path = #{treePath}" +
             "  where id = #{id}" })
-     int updateTestCaseID(TestCaseDO testCaseDO);
+     int updateTestCaseCode(TestCaseDO testCaseDO);
 
 }

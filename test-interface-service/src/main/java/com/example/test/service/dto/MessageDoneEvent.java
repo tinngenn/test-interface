@@ -43,12 +43,15 @@ public class MessageDoneEvent extends AbstractMessageEvent {
     @JsonFormat( pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.ARRAY)
     private LocalDateTime endTime;
 
+    @JsonIgnore
     private String name;
+
 
     private String id;
 
     private Integer stepCount;
 
+    @JsonIgnore
     private Integer priority;
 
 }

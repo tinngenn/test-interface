@@ -54,7 +54,7 @@ public class KafkaMessage {
         clientInfo.setClientType("ToceanXengine");
         clientInfo.setNodeName("10.10.20.199:17950");
         clientInfo.setOrgId(1L);
-        clientInfo.setAppId(368947606514212864l);
+        clientInfo.setAppId(377820929843134464l);
 
 
         reportMessage.setData(date);
@@ -108,9 +108,10 @@ public class KafkaMessage {
     public String getMessageDoneEvent(MessageDoneEventDTO messageDoneEventDTO)
             throws JsonProcessingException {
         MessageDoneEvent messageDoneEvent = new MessageDoneEvent();
+        messageDoneEvent.setId(messageDoneEventDTO.getTestCaseId());
         messageDoneEvent.setEvent("done");
         messageDoneEvent.setRequestId(messageDoneEventDTO.getRequestId());
-        messageDoneEvent.setExecuteId(11);
+        messageDoneEvent.setExecuteId(messageDoneEventDTO.getExecuteId());
         messageDoneEvent.setFileKey(messageDoneEventDTO.getFileKey());
         messageDoneEvent.setBytesSize(6666);
         messageDoneEvent.setFileName(messageDoneEventDTO.getTestCaseName());
@@ -122,7 +123,7 @@ public class KafkaMessage {
         messageDoneEvent.setName(messageDoneEventDTO.getTestCaseName());
         messageDoneEvent.setId(messageDoneEventDTO.getTestCaseId());
         messageDoneEvent.setStepCount(Integer.valueOf(messageDoneEventDTO.getStepCount()));
-        messageDoneEvent.setPriority(Integer.valueOf(messageDoneEventDTO.getPriority()));
+       // messageDoneEvent.setPriority(Integer.valueOf(messageDoneEventDTO.getPriority()));
         messageDoneEvent.setStatus(messageDoneEventDTO.getExecuteStatusEnum());
         return   objectMapper.writeValueAsString(messageDoneEvent);
     }

@@ -262,16 +262,17 @@ public class KafkaServierControllerApplication {
                         ExecuteStatusEnum executeStatusEnum = JSONObject.parseObject(statusEnum,
                                                                                 ExecuteStatusEnum.class);
                         log.info(executeStatusEnum.getDesc());
-                        String testCaseId = "111";
+                        String testCaseCode = "111";
                         String stepCount="2";
                         String priority="2";
+                        String executeId = "1";
                         String fileKey="2021/10/28/6a0aadf2dd2e48ed8d0fe1df870a1776";
                         String testCaseName="testCaseName";
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         String startTime=sdf.format(new Date());
                         String endTime=sdf.format(new Date());
-                        if(parmMap.containsKey("testCaseId") && StringUtils.isNotEmpty(parmMap.get("testCaseId"))){
-                            testCaseId = parmMap.get("testCaseId");
+                        if(parmMap.containsKey("testCaseCode") && StringUtils.isNotEmpty(parmMap.get("testCaseCode"))){
+                            testCaseCode = parmMap.get("testCaseCode");
                         }
                         if(parmMap.containsKey("stepCount") && StringUtils.isNotEmpty(parmMap.get("stepCount"))){
                             stepCount = parmMap.get("stepCount");
@@ -291,11 +292,18 @@ public class KafkaServierControllerApplication {
                         if(parmMap.containsKey("testCaseName") && StringUtils.isNotEmpty(parmMap.get("testCaseName"))){
                             testCaseName = parmMap.get("testCaseName");
                         }
+                        if(parmMap.containsKey("testCaseName") && StringUtils.isNotEmpty(parmMap.get("testCaseName"))){
+                            testCaseName = parmMap.get("testCaseName");
+                        }
+                        if(parmMap.containsKey("executeId") && StringUtils.isNotEmpty(parmMap.get("executeId"))){
+                            executeId = parmMap.get("executeId");
+                        }
                         MessageDoneEventDTO messageDoneEventDTO = new MessageDoneEventDTO();
                         messageDoneEventDTO.setRequestId(requestId);
-                        messageDoneEventDTO.setTestCaseId(testCaseId);
+                        messageDoneEventDTO.setTestCaseId(testCaseCode);
                         messageDoneEventDTO.setStepCount(stepCount);
                         messageDoneEventDTO.setPriority(priority);
+                        messageDoneEventDTO.setExecuteId(Integer.valueOf(executeId));
                         messageDoneEventDTO.setFileKey(fileKey);
                         messageDoneEventDTO.setStartTime(startTime);
                         messageDoneEventDTO.setEndTime(endTime);
@@ -307,7 +315,7 @@ public class KafkaServierControllerApplication {
                         ListenableFuture listenableFuture = kafkaTemplate.send(Constants.TOCEAN_TIMED_EVENT, message);
 
                         listenableFuture.addCallback(successCallbackOverride, failureCallbackOverride);
-                        return "DispatchErrorEvent 发送成功";
+                        return "MessageDoneEvent 发送成功";
                     }
 
                 }

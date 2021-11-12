@@ -26,9 +26,9 @@ public class TestCaseDODao {
     /**
      * 查询测试用例表
      */
-    public List<TestCaseDO> getTestCase(String testCaseId) {
+    public List<TestCaseDO> getTestCase(String testCaseCode) {
         DatabaseContextHolder.setDatabaseType(DatabaseType.toceandb);
-        return testCaseDOMapper.getTestCase(testCaseId);
+        return testCaseDOMapper.getTestCase(testCaseCode);
     }
 
 
@@ -43,9 +43,9 @@ public class TestCaseDODao {
     /**
      * 更新TestCase
      */
-    public int updateTestCaseID(TestCaseDO TestCaseDO){
+    public int updateTestCaseCode(TestCaseDO TestCaseDO){
         DatabaseContextHolder.setDatabaseType(DatabaseType.toceandb);
-        return testCaseDOMapper.updateTestCaseID(TestCaseDO);
+        return testCaseDOMapper.updateTestCaseCode(TestCaseDO);
     }
 }
 

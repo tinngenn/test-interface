@@ -53,7 +53,8 @@ public class XcenterProxy {
     public String start() {
         Configuration configuration = new Configuration();
         configuration.setClientType("ToceanXengine");
-        configuration.setServerAddress("10.10.20.199:17951");
+        //configuration.setServerAddress("10.10.20.199:17951");
+        configuration.setServerAddress("10.10.220.210:17951");
         if (true)
             configuration.addExtension("orgCode", "testOrgcet");
         configuration.addExtension("appCode", "test-inface");

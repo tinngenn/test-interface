@@ -26,9 +26,9 @@ public class TestCaseDefineApiSAutoDODao {
     /**
      * 查询测试用例配置表
      */
-    public List<TestCaseDefineApiAutoDO> getTestCaseDefineApiAutoDO(Long tenantId) {
+    public List<TestCaseDefineApiAutoDO> getTestCaseDefineApiAutoDO(Long Id) {
         DatabaseContextHolder.setDatabaseType(DatabaseType.toceandb);
-        return testCaseDefineApiAutoDOMapper.getTestCaseDefineApiAutoDO(tenantId);
+        return testCaseDefineApiAutoDOMapper.getTestCaseDefineApiAutoDO(Id);
     }
 
 

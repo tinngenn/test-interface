@@ -25,13 +25,13 @@ public class TestCaseService {
 
     /**
      * 通过testCaseId 查询测试用例表配置
-     * @param  testCaseId   测试用例id
+     * @param  testCaseCode   测试用例id
      * @return TestCaseDO   表数据DO对象
      */
 
-    public List<TestCaseDO> getTestCase(String testCaseId) {
+    public List<TestCaseDO> getTestCase(String testCaseCode) {
 
-        return testCaseDODao.getTestCase(testCaseId);
+        return testCaseDODao.getTestCase(testCaseCode);
 
     }
 
@@ -52,9 +52,9 @@ public class TestCaseService {
      * @return int         返回更新状态
      */
 
-    public int updateTestCaseID(TestCaseDO testCaseDO) {
+    public int updateTestCaseCode(TestCaseDO testCaseDO) {
 
-        return testCaseDODao.updateTestCaseID(testCaseDO);
+        return testCaseDODao.updateTestCaseCode(testCaseDO);
     }
 
 

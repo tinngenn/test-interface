@@ -12,7 +12,7 @@ import com.example.test.dubbo.api.request.OrgMerchantRegisteDTO;
 import com.example.test.dubbo.cosurmer.ClientRpcServiceCall;
 import com.example.test.dubbo.cosurmer.OrgMerchantDubboCall;
 import com.example.test.service.ApiOptionService;
-import com.example.test.service.CreateTestCaseService;
+import com.example.test.service.CopyTestCaseService;
 import com.example.test.utils.CotrollerFuction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -46,7 +46,7 @@ public class HttpServierControllerApplication {
 
 
     @Autowired
-    CreateTestCaseService createTestCaseService;
+    CopyTestCaseService copyTestCaseService;
 
 
     @Autowired
@@ -150,14 +150,14 @@ public class HttpServierControllerApplication {
     }
 
 
-    @ApiOperation("Http 同一树下复制配置用例  根据TestCaseId")
+    @ApiOperation("Http 同一树下复制配置用例  根据TestCaseCode")
     @ApiImplicitParams(
             {
-                @ApiImplicitParam(name = "testCaseId", value = "用例ID", required = false , dataType = "string"),
+                @ApiImplicitParam(name = "testCaseCode", value = "用例ID", required = false , dataType = "string"),
                 @ApiImplicitParam(name = "count", value = "复制数量", required = false , dataType = "string"),
 
             })
-    @RequestMapping(value = "/CopyTestCase/testcaseId", method = {RequestMethod.GET, RequestMethod.POST},
+    @RequestMapping(value = "/copyTestCase/testCaseCode", method = {RequestMethod.GET, RequestMethod.POST},
             produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String copyTestCase(HttpServletRequest httpRequest) {
@@ -166,12 +166,12 @@ public class HttpServierControllerApplication {
         Map<String, String> parmMap = cotrollerFuction.printMessage(httpRequest);
 
 
-        if (!parmMap.containsKey("testCaseId") && !StringUtils.isNotEmpty(parmMap.get("testCaseId"))) {
-            return "需要复制的TestCaseId 不能为空!";
+        if (!parmMap.containsKey("testCaseCode") && !StringUtils.isNotEmpty(parmMap.get("testCaseCode"))) {
+            return "需要复制的testCaseCode 不能为空!";
 
         }
-        if(testCaseService.getTestCase(parmMap.get("testCaseId")).size()<1){
-            return "请输入数据库存在的TestCaseId！";
+        if(testCaseService.getTestCase(parmMap.get("testCaseCode")).size()<1){
+            return "请输入数据库存在的testCaseCode！";
         }
         if (parmMap.containsKey("count") && StringUtils.isNotEmpty(parmMap.get("count"))) {
             Integer count = Integer.valueOf(parmMap.get("count"));
@@ -180,11 +180,11 @@ public class HttpServierControllerApplication {
                     //发送10次消息
                     for (Integer i = 0; i < count; i++) {
                         try {
-                            CreateTestCaseService createTestCaseService = new CreateTestCaseService();
-                            createTestCaseService.setTestCaseId(parmMap.get("testCaseId"),i);
-                            createTestCaseService.setDbService(testCaseService,testCaseDefineApiAutoStepService,
+                            CopyTestCaseService copyTestCaseService = new CopyTestCaseService();
+                            copyTestCaseService.setTestCaseCode(parmMap.get("testCaseCode"),i);
+                            copyTestCaseService.setDbService(testCaseService,testCaseDefineApiAutoStepService,
                                     testCaseDefineApiAutoService);
-                            ThreadPoolUtil.execute(createTestCaseService);
+                            ThreadPoolUtil.execute(copyTestCaseService);
                            // Thread.sleep(1000);
                         } catch (Exception e) {
                             e.printStackTrace();

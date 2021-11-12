@@ -10,9 +10,9 @@ import java.util.List;
 @Mapper
 public interface TestCaseDefineApiAutoDOMapper {
 
-    @Select("select * from test_case_define_api_auto  where id = #{tenantId}")
+    @Select("select * from test_case_define_api_auto  where id = #{Id}")
     @Results(value = { @Result(id = true, column = "id", property = "id")})
-     List<TestCaseDefineApiAutoDO> getTestCaseDefineApiAutoDO(@Param("tenantId") Long tenantId);
+     List<TestCaseDefineApiAutoDO> getTestCaseDefineApiAutoDO(@Param("Id") Long Id);
 
 
     // 插入test_case_define_api_auto测试用例配置表

@@ -28,13 +28,11 @@ public class TestCaseDO {
 
     private Long    libraryId;
 
-    private String  testCaseId;
+    private String  testCaseCode;
 
     private String  testCaseType;
 
     private Byte    priority;
-
-    private Long    defineId;
 
     private String  treePath;
 }
