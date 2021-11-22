@@ -1,5 +1,6 @@
 package com.example.test.web;
 
+import com.example.test.common.IPUtils;
 import com.example.test.utils.CotrollerFuction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -59,10 +60,11 @@ public class FileUploadControllerApplication {
             model.addAttribute("message", "文件上传成功，文件名：" + file.getOriginalFilename() );
             File dirFile=new File("./","/fileUpload/");
             String[] fileName=dirFile.list();
-            InetAddress addr = InetAddress.getLocalHost();
+            String hostIp = IPUtils.getLocalIP();
+
             for(int i=0;i<fileName.length;i++) {
                 log.info("fileName:{}",fileName[i]);
-                fileName[i] = "http://" +addr.getHostAddress() + ":" + port +"/fileUpload/" + fileName[i];
+                fileName[i] = "http://" + hostIp + ":" + port +"/fileUpload/" + fileName[i];
             }
             model.addAttribute("fileName", fileName);
         } catch (IOException e) {
