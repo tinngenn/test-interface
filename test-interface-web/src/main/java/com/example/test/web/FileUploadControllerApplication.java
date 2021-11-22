@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,6 +28,9 @@ public class FileUploadControllerApplication {
 
     @Autowired
     CotrollerFuction cotrollerFuction;
+
+    @Value("${server.http.port}")
+    private String port ;
 
     @ApiOperation("Http文件上传测试接口")
     @RequestMapping(value= "/fileUpload" , method = {RequestMethod.GET,RequestMethod.POST})
@@ -52,8 +57,14 @@ public class FileUploadControllerApplication {
             Path path = Paths.get("./fileUpload/" + file.getOriginalFilename());
             Files.write(path, bytes);
             model.addAttribute("message", "文件上传成功，文件名：" + file.getOriginalFilename() );
-
-
+            File dirFile=new File("./","/fileUpload/");
+            String[] fileName=dirFile.list();
+            InetAddress addr = InetAddress.getLocalHost();
+            for(int i=0;i<fileName.length;i++) {
+                log.info("fileName:{}",fileName[i]);
+                fileName[i] = "http://" +addr.getHostAddress() + ":" + port +"/fileUpload/" + fileName[i];
+            }
+            model.addAttribute("fileName", fileName);
         } catch (IOException e) {
             log.info(e.toString());
             e.printStackTrace();

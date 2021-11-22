@@ -6,5 +6,17 @@
     <h2 th:text="${message}"/>
 </div>
 
+<div th:if="${fileName ne null} ">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>已上传文件</th>
+        </tr>
+        <tr th:each="r :${fileName}">
+            <td th:text="${r}"></td>
+       </tr>
+        </thead>
+    </table>
+</div>
 </body>
 </html>
