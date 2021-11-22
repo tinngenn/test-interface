@@ -1,25 +1,22 @@
 package com.example.test.congfig;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 资源映射路径
  */
-//@Configuration
+@Configuration
 public class MyWebAppConfigurer implements WebMvcConfigurer {
 
     /**上传地址*/
-    @Value("${files.upload.path}")
-    private String filePath;
+    private String filePath="/upload/**";
     /**显示相对地址*/
-    @Value("${files.upload.path.relative}")
-    private String fileRelativePath;
+    private String fileRelativePath="./fileUpload/";
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(fileRelativePath).
-                addResourceLocations("files:/" + filePath);
+        registry.addResourceHandler("/fileUpload/**").addResourceLocations("file:" + fileRelativePath);
     }
 }

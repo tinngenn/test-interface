@@ -21,7 +21,10 @@
     {
         location.assign("copyTestCase.html");
     }
-
+    function fileUploadTest()
+    {
+        location.assign("fileUpload.html");
+    }
 </script>
 <style type="text/css">
     body {
@@ -48,6 +51,11 @@
         <tr>
             <td>定时任务测试：</td>
             <td><input type="button" style="width:250px;height:30px;" onclick="timeTaskTest()" class="fontButton"  value="定时任务测试"/> </td>
+        </tr>
+        <tr>
+            <td>文件上传测试：</td>
+            <td><input type="button" style="width:250px;height:30px;" onclick="fileUploadTest()" class="fontButton"  value="文件上传测试"/> </td>
+            <td>（上传后静态文件路径：/fileUpload/）</td>>
         </tr>
     </table>
 </form>

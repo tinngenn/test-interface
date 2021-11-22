@@ -29,13 +29,14 @@ public class FileUploadControllerApplication {
 
     @ApiOperation("Http文件上传测试接口")
     @RequestMapping(value= "/fileUpload" , method = {RequestMethod.GET,RequestMethod.POST})
-    public String upload(@RequestParam("files") MultipartFile file,
+    public String upload(@RequestParam("file") MultipartFile file,
                          Model model, HttpServletRequest httpRequest) {
 
         cotrollerFuction.printMessage(httpRequest);
 
         if (file.isEmpty()) {
             model.addAttribute("message", "请选择一个文件上传！");
+            log.info("1111111111111");
             //redirectAttributes.addFlashAttribute("message", "Please select a files to upload");
             return "fileUploadStatus";
         }

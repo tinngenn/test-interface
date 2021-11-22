@@ -41,6 +41,8 @@ public class FirstFilter implements Filter {
        /* if(method.equalsIgnoreCase("OPTIONS")){
             servletResponse.getOutputStream().write("Success".getBytes("utf-8"));
         }else{*/
+       //log.info(((HttpServletRequest) servletRequest).getRequestURI());
+       // log.info(((HttpServletRequest) servletRequest).getRequestURL().toString());
            filterChain.doFilter(servletRequest, servletResponse);
        // }
     }

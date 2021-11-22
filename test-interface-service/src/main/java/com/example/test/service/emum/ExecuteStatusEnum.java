@@ -23,7 +23,7 @@ public enum ExecuteStatusEnum{
     ERROR(Integer.valueOf(10), "错误"),
     TIMEOUT(Integer.valueOf(11), "超时"),
     CANCEL(Integer.valueOf(12), "取消"),
-    EXIT(Integer.valueOf(13), "意外退出");
+    EXIT(Integer.valueOf(13), "退出");
 
     ExecuteStatusEnum(Integer code, String desc) {
 

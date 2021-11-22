@@ -292,21 +292,27 @@ public void tt() throws JsonProcessingException {
     }
 
 
-    //立即执行
+    //取消
     @Test
     public void cancel() throws  Exception{
 
         Map<String,Object> map = new HashMap<>();
         Map<String,String> header = new HashMap<>();
-        map.put("recordId",1456160477020184577l);
+        map.put("recordId",1460789614712205313l);
         log.info(map.toString());
         header.put("Content-Type","application/json");
         HttpClientUtil httpClientUtil = HttpClientUtil.getInstance();
-        String urlStr = "http://192.168.111.249:8000/api/tocean/public/timedtask/cancel";
+        String urlStr = "http://10.10.220.13:8080/api/tocean/public/timedtask/cancel";
         // urlStr = "http://localhost:8092/httpGetHtml";
         String resultJson=  httpClientUtil.doPostJson(urlStr,map,header);
         //JSONObject jsonObject = JSON.parseObject(resultJson);
         log.info(resultJson);
-
+        String resultJson2=  httpClientUtil.doPostJson(urlStr,map,header);
+        //JSONObject jsonObject = JSON.parseObject(resultJson);
+        log.info(resultJson2);
+        String resultJson3=  httpClientUtil.doPostJson(urlStr,map,header);
+        //JSONObject jsonObject = JSON.parseObject(resultJson);
+        log.info(resultJson3);
     }
+
 }
