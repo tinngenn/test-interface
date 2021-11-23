@@ -315,4 +315,21 @@ public void tt() throws JsonProcessingException {
         log.info(resultJson3);
     }
 
+    //取消
+    @Test
+    public void resultid() throws  Exception {
+
+        Map<String, Object> map = new HashMap<>();
+        Map<String, String> header = new HashMap<>();
+        map.put("resultId", 3357441);
+        log.info(map.toString());
+        header.put("Content-Type", "application/json");
+        HttpClientUtil httpClientUtil = HttpClientUtil.getInstance();
+        String urlStr = "http://10.10.220.13:8080//api/tocean/public/timedtask/getRecordResultDetail";
+        // urlStr = "http://localhost:8092/httpGetHtml";
+        String resultJson = httpClientUtil.doPostJson(urlStr, map, header);
+        //JSONObject jsonObject = JSON.parseObject(resultJson);
+        log.info(resultJson.toString());
+    }
+
 }

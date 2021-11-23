@@ -1,11 +1,13 @@
 package com.example.test.service;
 
 
-import com.example.test.service.farend.CommandModule;
+
 import com.example.test.service.delegate.util.JsonUtils;
 import com.example.test.service.dto.ClientInfo;
 import com.example.test.service.dto.ReportMessage;
 import com.example.test.service.emum.ExeEventEnum;
+
+import com.example.test.service.farend.CommandModule;
 import com.perfma.xcenter.client.Configuration;
 import com.perfma.xcenter.client.XCenterClient;
 import com.perfma.xcenter.client.command.CommandManager;
@@ -16,11 +18,11 @@ import com.perfma.xcenter.client.message.MessageManager;
 
 import java.util.Date;
 import java.util.List;
-
+import javax.annotation.Resource;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.annotation.Reference;
+
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -38,7 +40,7 @@ import org.springframework.util.CollectionUtils;
 @Component
 public class XcenterProxy {
 
-    @Reference
+    @Resource
     private List<CommandModule> commandModuleList;
 
     private XCenterClient client;
@@ -93,7 +95,10 @@ public class XcenterProxy {
     private void setCommandManager(XCenterClient client) {
         CommandManager commandManager = client.getCommandManager();
         if (!CollectionUtils.isEmpty(this.commandModuleList))
+            log.info("111111111111111111111111111");
             this.commandModuleList.forEach(commandManager::addCommand);
+            log.info("size:{}",commandModuleList.size());
+
     }
 
 
